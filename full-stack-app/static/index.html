@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Space Travel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>
+    <p>Number of people transported: <span id="transported-count">0</span></p>
+
+    <form id="passenger-form" method="post">
+        <label for="PassengerId">Passenger ID:</label>
+        <input type="text" id="PassengerId" name="PassengerId" required><br>
+
+        <label for="HomePlanet">Home Planet:</label>
+        <input type="text" id="HomePlanet" name="HomePlanet" required><br>
+
+        <label for="CryoSleep">Cryo Sleep:</label>
+        <input type="checkbox" id="CryoSleep" name="CryoSleep"><br>
+
+        <label for="Cabin">Cabin:</label>
+        <input type="text" id="Cabin" name="Cabin" required><br>
+
+        <label for="Destination">Destination:</label>
+        <input type="text" id="Destination" name="Destination" required><br>
+
+        <label for="Age">Age:</label>
+        <input type="number" step="0.01" id="Age" name="Age" required><br>
+
+        <label for="VIP">VIP:</label>
+        <input type="checkbox" id="VIP" name="VIP"><br>
+
+        <label for="RoomService">Room Service:</label>
+        <input type="number" step="0.01" id="RoomService" name="RoomService" required><br>
+
+        <label for="FoodCourt">Food Court:</label>
+        <input type="number" step="0.01" id="FoodCourt" name="FoodCourt" required><br>
+
+        <label for="ShoppingMall">Shopping Mall:</label>
+        <input type="number" step="0.01" id="ShoppingMall" name="ShoppingMall" required><br>
+
+        <label for="Spa">Spa:</label>
+        <input type="number" step="0.01" id="Spa" name="Spa" required><br>
+
+        <label for="VRDeck">VR Deck:</label>
+        <input type="number" step="0.01" id="VRDeck" name="VRDeck" required><br>
+
+        <label for="Name">Name:</label>
+        <input type="text" id="Name" name="Name" required><br>
+    </form>
+    <button id="submit-button">Submit</button>
+    <img id="result-image" src="" style="display: none;">
+    <script src="static/script.js"></script>
+</body>
+</html>

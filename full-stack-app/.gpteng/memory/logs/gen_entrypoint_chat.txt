@@ -1,0 +1,128 @@
+
+2024-09-20T22:57:03.492204
+================================ System Message ================================
+
+You will get information about a codebase that is currently on disk in the current folder.
+The user will ask you to write a script that runs the code in a specific way.
+You will answer with code blocks that include all the necessary terminal commands.
+Do not install globally. Do not use sudo.
+Do not explain the code, just give the commands.
+Do not use placeholders, use example values (like . for a folder argument) if necessary.
+
+
+================================ Human Message =================================
+
+
+        Make a unix script that
+        a) installs dependencies
+        b) runs all necessary parts of the codebase (in parallel if necessary)
+        
+Information about the codebase:
+
+```
+File: app.py
+1 from flask import Flask, request, jsonify
+2 from models import db, Passenger
+3 import hashlib
+4 
+5 app = Flask(__name__)
+6 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+7 db.init_app(app)
+8 
+9 @app.route('/api/submit', methods=['POST'])
+10 def submit():
+11     data = request.get_json()
+12     hash_value = hashlib.sha256(str(data).encode()).hexdigest()
+13     is_transported = int(hash_value, 16) % 2 == 1
+14     status = 'transported' if is_transported else 'safe'
+15     passenger = Passenger(hash=hash_value, status=status, **data)
+16     db.session.add(passenger)
+17     db.session.commit()
+18     return jsonify({'status': status})
+19 
+20 if __name__ == '__main__':
+21     app.run(debug=True)
+
+File: models.py
+1 from flask_sqlalchemy import SQLAlchemy
+2 
+3 db = SQLAlchemy()
+4 
+5 class Passenger(db.Model):
+6     id = db.Column(db.Integer, primary_key=True)
+7     PassengerId = db.Column(db.String(80), unique=True, nullable=False)
+8     HomePlanet = db.Column(db.String(80), nullable=False)
+9     CryoSleep = db.Column(db.Boolean, nullable=False)
+10     Cabin = db.Column(db.String(80), nullable=False)
+11     Destination = db.Column(db.String(80), nullable=False)
+12     Age = db.Column(db.Float, nullable=False)
+13     VIP = db.Column(db.Boolean, nullable=False)
+14     RoomService = db.Column(db.Float, nullable=False)
+15     FoodCourt = db.Column(db.Float, nullable=False)
+16     ShoppingMall = db.Column(db.Float, nullable=False)
+17     Spa = db.Column(db.Float, nullable=False)
+18     VRDeck = db.Column(db.Float, nullable=False)
+19     Name = db.Column(db.String(80), nullable=False)
+20     hash = db.Column(db.String(80), nullable=False)
+21     status = db.Column(db.String(80), nullable=False)
+
+File: requirements.txt
+1 Flask==1.1.2
+2 Flask-SQLAlchemy==2.4.4
+
+File: index.html
+1 <!DOCTYPE html>
+2 <html>
+3 <head>
+4     <title>Space Travel</title>
+5     <link rel="stylesheet" type="text/css" href="style.css">
+6 </head>
+7 <body>
+8     <form id="passenger-form">
+9         <!-- Add form fields for each column in the CSV file here -->
+10     </form>
+11     <button id="submit-button">Submit</button>
+12     <img id="result-image" src="" style="display: none;">
+13     <script src="script.js"></script>
+14 </body>
+15 </html>
+
+File: style.css
+1 /* Add your CSS styles here */
+
+File: script.js
+1 document.getElementById('submit-button').addEventListener('click', function() {
+2     var data = {};
+3     // Populate the data object with the values from the form fields
+4     fetch('/api/submit', {
+5         method: 'POST',
+6         headers: {
+7             'Content-Type': 'application/json'
+8         },
+9         body: JSON.stringify(data)
+10     })
+11     .then(response => response.json())
+12     .then(data => {
+13         var image = document.getElementById('result-image');
+14         if (data.status === 'transported') {
+15             image.src = 'transported.jpg';
+16         } else {
+17             image.src = 'safe.jpg';
+18         }
+19         image.style.display = 'block';
+20     });
+21 });
+
+```
+
+================================== Ai Message ==================================
+
+```bash
+#!/bin/bash
+
+# a) Install dependencies
+pip install -r requirements.txt
+
+# b) Run the application
+FLASK_APP=app.py flask run &
+```

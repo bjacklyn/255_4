@@ -1,0 +1,114 @@
+/* Add your CSS styles here */
+
+/* Reset some default browser styles */
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set a nice font and background color for the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Style the main container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style headings */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Style paragraphs */
+p {
+    margin-bottom: 20px;
+}
+
+/* Style links */
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Style lists */
+ul, ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+/* Style buttons */
+button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Add some spacing to form elements */
+input, textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Style the footer */
+footer {
+    margin-top: 20px;
+    padding: 10px 0;
+    text-align: center;
+    background: #333;
+    color: #fff;
+}
+
+
+/* Define the dance animation */
+@keyframes dance {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(10px); }
+    50% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+  }
+  
+/* Define the intense dance animation */
+@keyframes intense-dance {
+    0% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(20px) rotate(10deg); }
+    50% { transform: translateX(-20px) rotate(-10deg); }
+    75% { transform: translateX(20px) rotate(10deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+  }
+  
+/* Apply the normal dance animation to the image */
+.dance {
+  animation: dance 0.5s infinite;
+}
+  
+/* Apply the intense dance animation to the image */
+.intense-dance {
+  animation: intense-dance 0.5s infinite;
+}

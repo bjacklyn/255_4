@@ -1,0 +1,15 @@
+Generate a full stack application using python flask for the backend, javascript/html/css for the frontend, and sqlite3 for the database.
+The frontend of the application should display a separate widget for each column in the example .csv file below.
+The frontend should have a submit button that when pressed sends the values of the textboxes, dropdowns, etc to the backend REST API endpoint.
+The backend should hash the values and if the hash value is odd return "transported" to the frontend, otherwise return "safe".
+The backend should store in a table in sqlite the values provided by the frontend in a separate column for each value, the computed hash in a column, and whether they were transported in a column.
+The frontend should display a picture of a person being transported if "transported" is returned, otherwise display a picture of a person who safe.
+
+Example .csv data:
+
+PassengerId,HomePlanet,CryoSleep,Cabin,Destination,Age,VIP,RoomService,FoodCourt,ShoppingMall,Spa,VRDeck,Name
+0001_01,Europa,False,B/0/P,TRAPPIST-1e,39.0,False,0.0,0.0,0.0,0.0,0.0,Maham Ofracculy
+0002_01,Earth,False,F/0/S,TRAPPIST-1e,24.0,False,109.0,9.0,25.0,549.0,44.0,Juanna Vines
+0003_01,Europa,False,A/0/S,TRAPPIST-1e,58.0,True,43.0,3576.0,0.0,6715.0,49.0,Altark Susent
+0003_02,Europa,False,A/0/S,TRAPPIST-1e,33.0,False,0.0,1283.0,371.0,3329.0,193.0,Solam Susent
+
