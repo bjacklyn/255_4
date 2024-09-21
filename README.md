@@ -2,3 +2,4 @@
 
 Part 2) Full stack application using gpt-engineer and github copilot in vs code
 * https://www.youtube.com/watch?v=OQgPBpstXGM
+* Code is in full-stack-app directory
